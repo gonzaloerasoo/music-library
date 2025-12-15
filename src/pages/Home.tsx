@@ -8,11 +8,9 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className="container centered">
       <h1>Bienvenido a la Biblioteca de Música</h1>
-      <button onClick={handleSearch}>
-        Buscar mi Artista Favorito (ID 2)
-      </button>
+      <button onClick={handleSearch}>Buscar mi Artista Favorito (ID 2)</button>
     </div>
   );
 }

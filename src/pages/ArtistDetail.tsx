@@ -6,13 +6,19 @@ export default function ArtistDetail() {
   const artist = ARTIST_DATA.find((a) => a.id === artistId);
 
   if (!artist) {
-    return <h2>Artista no encontrado</h2>;
+    return (
+      <div className="container centered">
+        <h2>Artista no encontrado</h2>
+      </div>
+    );
   }
 
   return (
-    <div>
-      <h1>{artist.name}</h1>
-      <p>Género: {artist.genre}</p>
+    <div className="container">
+      <div className="card">
+        <h1>{artist.name}</h1>
+        <p><strong>Género:</strong> {artist.genre}</p>
+      </div>
     </div>
   );
 }

@@ -8,12 +8,14 @@ const ARTIST_DATA = [
 
 export default function Artists() {
   return (
-    <div>
+    <div className="container">
       <h1>Lista de Artistas</h1>
       <ul>
         {ARTIST_DATA.map((artist) => (
           <li key={artist.id}>
-            <Link to={`/artists/${artist.id}`}>{artist.name}</Link>
+            <Link to={`/artists/${artist.id}`}>
+              {artist.name} — <span style={{ color: '#666' }}>{artist.genre}</span>
+            </Link>
           </li>
         ))}
       </ul>

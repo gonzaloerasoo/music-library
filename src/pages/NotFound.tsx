@@ -1,3 +1,7 @@
 export default function NotFound() {
-  return <h1>404 - Página no encontrada</h1>;
+  return (
+    <div className="container centered">
+      <h1>404 - Página no encontrada</h1>
+    </div>
+  );
 }
