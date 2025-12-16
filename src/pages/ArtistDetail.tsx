@@ -1,9 +1,9 @@
-import { useParams } from 'react-router-dom';
-import { ARTIST_DATA } from './Artists';
+import { useParams } from "react-router-dom";
+import { ARTISTS } from "../components/artistList/artist-data";
 
 export default function ArtistDetail() {
   const { artistId } = useParams();
-  const artist = ARTIST_DATA.find((a) => a.id === artistId);
+  const artist = ARTISTS.find((a) => a.id === artistId);
 
   if (!artist) {
     return (
@@ -17,7 +17,9 @@ export default function ArtistDetail() {
     <div className="container">
       <div className="card">
         <h1>{artist.name}</h1>
-        <p><strong>Género:</strong> {artist.genre}</p>
+        <p>
+          <strong>Género:</strong> {artist.genre}
+        </p>
       </div>
     </div>
   );
