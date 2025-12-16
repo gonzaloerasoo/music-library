@@ -12,12 +12,17 @@
 }
 
 .modal {
+  position: relative;
   background: var(--card-bg);
   padding: 30px;
   border-radius: 14px;
   border: 1px solid var(--card-border);
   width: 380px;
   animation: fadeIn 0.2s ease;
+}
+
+.modal.closing {
+  animation: fadeOut 0.2s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -31,11 +36,54 @@
   }
 }
 
-.modal h2 {
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+.modal-header {
+  position: relative;
   margin-bottom: 20px;
-  color: var(--heading-color);
+  height: 28px;
+}
+
+.modal-title {
   font-size: 22px;
+  color: var(--heading-color);
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -5px;
   text-align: center;
+  line-height: 28px;
+}
+
+.close-x {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.close-icon {
+  width: 100%;
+  height: 100%;
+  stroke: var(--text-color);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  fill: none;
 }
 
 .select-wrapper {
@@ -52,6 +100,14 @@
   font-size: 16px;
   cursor: pointer;
   transition: 0.2s ease;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #1f3f66 50%),
+    linear-gradient(135deg, #1f3f66 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(50% - 4px),
+    calc(100% - 15px) calc(50% + 4px);
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 40px;
 }
 
 .select-wrapper select:hover {

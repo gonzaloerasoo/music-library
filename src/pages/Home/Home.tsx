@@ -7,10 +7,15 @@ export default function Home() {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [selectedId, setSelectedId] = useState("");
+  const [closing, setClosing] = useState(false);
 
   const closeModal = () => {
-    setShowModal(false);
-    setSelectedId("");
+    setClosing(true);
+    setTimeout(() => {
+      setShowModal(false);
+      setSelectedId("");
+      setClosing(false);
+    }, 200);
   };
 
   const handleNavigate = () => {
@@ -40,14 +45,29 @@ export default function Home() {
     <div className="container centered">
       <h1>Bienvenido a la Biblioteca de Música</h1>
 
-      <button onClick={() => setShowModal(true)}>
+      <button type="button" onClick={() => setShowModal(true)}>
         Buscar a mi Artista Favorito
       </button>
 
       {showModal && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <h2>Selecciona un Artista</h2>
+        <div className="modal-overlay" onClick={closeModal}>
+          <div
+            className={`modal ${closing ? "closing" : ""}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="modal-header">
+              <h2 className="modal-title">Selecciona un Artista</h2>
+              <button
+                className="close-x"
+                onClick={closeModal}
+                aria-label="Cerrar modal"
+              >
+                <svg className="close-icon" viewBox="0 0 24 24">
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                  <line x1="6" y1="18" x2="18" y2="6" />
+                </svg>
+              </button>
+            </div>
 
             <div className="select-wrapper">
               <select
