@@ -1,4 +1,4 @@
-import ArtistList from "../components/artistList/ArtistList";
+import ArtistList from "../../../components/artistList/ArtistList";
 
 export default function Artists() {
   return (

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { ARTISTS } from "../components/artistList/artist-data";
+import { ARTISTS } from "../../../components/artistList/artist-data";
 
 export default function ArtistDetail() {
   const { artistId } = useParams();

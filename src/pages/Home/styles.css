@@ -1,0 +1,99 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+}
+
+.modal {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 14px;
+  border: 1px solid var(--card-border);
+  width: 380px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+  color: var(--heading-color);
+  font-size: 22px;
+  text-align: center;
+}
+
+.select-wrapper {
+  margin-bottom: 25px;
+}
+
+.select-wrapper select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-color);
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.select-wrapper select:hover {
+  background: var(--list-hover);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.modal-actions button {
+  flex: 1;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.cancel-btn {
+  background: #e3e3e3;
+  color: #444;
+}
+
+.cancel-btn:hover {
+  background: #d6d6d6;
+}
+
+.confirm-btn {
+  background: #bcd7f7;
+  color: #1f3f66;
+}
+
+.confirm-btn:hover {
+  background: #a9c9f0;
+}
+
+.confirm-btn:disabled {
+  background: #dbe8f7;
+  color: #8fa4b8;
+  cursor: not-allowed;
+}
