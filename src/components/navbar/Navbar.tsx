@@ -3,14 +3,21 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 
 export default function Navbar() {
-  const [darkMode, setDarkMode] = useState(
-    () => localStorage.getItem("theme") === "dark"
-  );
+  const [themeIndex, setThemeIndex] = useState(() => {
+    const stored = localStorage.getItem("theme");
+    return stored === "dark" ? 1 : stored === "sepia" ? 2 : 0;
+  });
 
   useEffect(() => {
-    document.body.classList.toggle("dark-mode", darkMode);
-    localStorage.setItem("theme", darkMode ? "dark" : "light");
-  }, [darkMode]);
+    document.body.classList.remove("dark-mode", "sepia-mode");
+
+    if (themeIndex === 1) document.body.classList.add("dark-mode");
+    if (themeIndex === 2) document.body.classList.add("sepia-mode");
+
+    const theme =
+      themeIndex === 0 ? "light" : themeIndex === 1 ? "dark" : "sepia";
+    localStorage.setItem("theme", theme);
+  }, [themeIndex]);
 
   return (
     <nav>
@@ -20,11 +27,14 @@ export default function Navbar() {
       <div className="theme-switch">
         <label className="switch">
           <input
-            type="checkbox"
-            checked={darkMode}
-            onChange={() => setDarkMode(!darkMode)}
+            type="range"
+            min="0"
+            max="2"
+            step="1"
+            value={themeIndex}
+            onChange={(e) => setThemeIndex(Number(e.target.value))}
           />
-          <span className="slider"></span>
+          <span className={`slider pos-${themeIndex}`}></span>
         </label>
       </div>
     </nav>
